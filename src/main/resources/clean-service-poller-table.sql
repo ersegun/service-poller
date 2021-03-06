@@ -1,0 +1,1 @@
+Delete from service_url

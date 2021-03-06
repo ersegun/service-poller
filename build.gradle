@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def versions = [
+        vertxVersion: '3.6.3',
+        junitJupiterEngineVersion: '5.2.0',
+        rxJavaVersion: '2.2.8',
+        commonsValidatorVersion: '1.4.1'
+]
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    implementation "io.vertx:vertx-core:$versions.vertxVersion"
+    implementation "io.vertx:vertx-core:$versions.vertxVersion"
+    implementation "io.vertx:vertx-web:$versions.vertxVersion"
+    implementation "io.vertx:vertx-web-client:$versions.vertxVersion"
+    implementation "io.vertx:vertx-jdbc-client:$versions.vertxVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$versions.rxJavaVersion"
+    implementation "commons-validator:commons-validator:$versions.commonsValidatorVersion"
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
+
+    testImplementation "io.vertx:vertx-junit5:$versions.vertxVersion"
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:$versions.junitJupiterEngineVersion")
+}
+
+test {
+    useJUnitPlatform()
+}
